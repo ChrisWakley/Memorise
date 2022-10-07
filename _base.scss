@@ -3,8 +3,8 @@
 $font-display: "Roboto" , sans-serif;
 $font-body: "Roboto Mono" , cursive;
 
-$color-modifier: #0e3d6b;
-$color-function: #00abf5de;
+$color-modifier: #2c86cf;
+$color-function: #120287de;
 $color-input: #b5b2b26d;
 $color-white: #fafafa;
 $color-grey: #bebcbc;
@@ -22,8 +22,6 @@ html, body {
     overflow: hidden;
 }
 
-// @media screen and (min-width: 520px) {
-//     html {
-//         background: linear-gradient(to right, $color-modifier, $color-function);
-//     }
-// }
+    html {
+        background: linear-gradient(to right, $color-modifier, $color-function);
+    }

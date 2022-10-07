@@ -1,1 +1,29 @@
 @use"./_base.scss" as *;
+
+button {
+    background-color: $color-function;
+    color: $color-white;
+    text-align: center;
+    box-shadow: 2px 2px 2px 2px lightgray;
+    border-radius: 5px;
+}
+
+.header__container {
+    .header__text{
+        font-family: $font-display;
+        color: $color-white;
+        font-size: 14px;
+    }
+}
+
+.pannel__container {
+    .pannel__prevScore {
+        color: $color-white;
+    }
+}
+
+.header {
+    font-family: $font-display;
+    color: $color-white;
+    font-size: 24px;
+}
