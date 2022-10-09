@@ -37,6 +37,16 @@ button {
   font-size: 24px;
 }
 
+.card {
+  background-color: #dfc375a6;
+}
+.card .card__content {
+  font-family: "Roboto", sans-serif;
+  color: #fafafa;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
 button {
   height: 2rem;
   width: 4rem;
@@ -82,22 +92,25 @@ button {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
-  gap: 0.5rem;
+  gap: 1rem;
   justify-items: center;
 }
 .game__container .card {
   display: flex;
-  flex-direction: column;
-  max-width: 3rem;
+  max-width: 5rem;
+  max-height: 4rem;
   border-radius: 3px;
   overflow: hidden;
+  justify-content: center;
+  padding: 0.6rem 0rem;
 }
 .game__container .card .card__image {
-  transform: scale(0.5);
+  height: 2.5rem;
+  width: 2.5rem;
 }
 .game__container .card .card__content {
-  padding: 1rem;
   display: flex;
   flex-direction: column;
+  text-align: center;
   gap: 1rem;
 }

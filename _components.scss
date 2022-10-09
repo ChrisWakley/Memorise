@@ -27,3 +27,13 @@ button {
     color: $color-white;
     font-size: 24px;
 }
+
+.card {
+    background-color: $color-card;
+        .card__content {
+            font-family: $font-display;
+            color: $color-white;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+}
