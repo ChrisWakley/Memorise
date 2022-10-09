@@ -145,6 +145,17 @@ const runesArray = [
     },
     ]
 
-
+    const gameContainer = document.querySelector(".game__container");
+    const showCards = () => {
+        runesArray.forEach((runes) => {
+            gameContainer.innerHTML +=
+            `<div class ="card">
+                <img src="${runes.imagesrc}" class="card__image">
+                <div class="card__content">${(runes.name)}</div>
+            </div>`;
+        })
+    };
+showCards(runesArray);
+// console.log(runes);
     // const images = document.querySelector(".imageTesting")
     // images.src = "./images/fireRune.png"

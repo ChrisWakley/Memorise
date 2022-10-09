@@ -78,17 +78,24 @@ button {
   align-items: center;
 }
 
-> .card {
+.game__container {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  gap: 0.5rem;
+  justify-items: center;
+}
+.game__container .card {
   display: flex;
   flex-direction: column;
-  max-width: 200px;
+  max-width: 3rem;
   border-radius: 3px;
   overflow: hidden;
 }
-> .card > .card__image {
-  transform: scale(1.25);
+.game__container .card .card__image {
+  transform: scale(0.5);
 }
-> .card > .card__content {
+.game__container .card .card__content {
   padding: 1rem;
   display: flex;
   flex-direction: column;
