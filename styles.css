@@ -104,13 +104,61 @@ button {
   justify-content: center;
   padding: 0.6rem 0rem;
 }
-.game__container .card .card__image {
+.game__container .card .card__front .card__imagefront {
   height: 2.5rem;
   width: 2.5rem;
 }
-.game__container .card .card__content {
+.game__container .card .card__front .card__content {
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 1rem;
+}
+.game__container .card .card__back .card__imageback {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.game__container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+}
+
+.card {
+  transition: all 0.8s ease;
+  transform-style: preserve-3d;
+}
+.card .card__back {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+.card .card__front {
+  backface-visibility: hidden;
+}
+
+.flipCard {
+  transform: rotateY(180deg);
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-15px);
+  }
+  40% {
+    transform: translateX(15px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
 }
