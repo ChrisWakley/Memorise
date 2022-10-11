@@ -7,17 +7,25 @@
 .card {
     transition: all 0.8s ease;
     transform-style: preserve-3d;
-    .card__back {
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-    }
     .card__front {
-    backface-visibility: hidden;
+        visibility: hidden;
+        transform: rotateY(180deg);
     }
+    .card__back {
+        visibility: visible;
+        transform: rotateY(-180deg);
+    }
+    
 }
 
 .flipCard {
     transform: rotateY(180deg);
+    .card__front {
+        visibility: visible;
+    }
+    .card__back {
+        visibility: hidden;
+    }
 }
 
 .shake {

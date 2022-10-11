@@ -8,8 +8,12 @@ const resetGame = document.querySelector(".pannel__button--reset");
 // let cardOne, cardTwo;
 // let disableDeck = false;
 
-//THIS SHUFFLES THE CARDS ON PAGE LOAD. need to edit to shuffle on click start.
+//THIS SHUFFLES THE CARDS ON PAGE LOAD AND ON START CLICK.
+//REMOVES FLIPCARD CLASS AS WELL.
 const shuffle = (e) => {
+    cards.forEach((card) => {
+        card.classList.remove('flipCard');
+    });
     const children = [...gameContainer.children];
     let currentIndex = children.length, temporaryValue, randomIndex;
     while (0!== currentIndex) {
@@ -42,16 +46,28 @@ startGame.addEventListener("click", shuffle);
 // };
 // showCards(runesArray);
 
-////THIS WORKS! need to make each card a block element so images and text cant be flipped.
-const flipCard = (e) => {
-    e.target.classList.toggle("flipCard");
-    console.log(e.target);
-};
+// const flipCard = (e) => {
+//     e.target.classList.toggle("flipCard");
+//     console.log(e.target);
+//     e.preventDefault()
+// };
+
+// for(let i = 0; i < cards.length; i++){
+//     cards[i].addEventListener("click", flipCard);
+// }
+
+////THIS WORKS!
+
+cards.forEach((card) => {
+    card.addEventListener("click", () => {
+        card.classList.toggle('flipCard');
+    });
+});
+// cards.forEach((card) => {
+//     card.addEventListener("click", () => {
+//         card.classList.toggle('hiddenFront');
+//     });
+// });
 // cards.forEach((card) => {
 //     card.addEventListener("click", flipCard)
 // });
-
-
-for(let i = 0; i < cards.length; i++){
-    cards[i].addEventListener("click", flipCard);
-}

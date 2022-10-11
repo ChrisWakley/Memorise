@@ -105,9 +105,12 @@ button {
   justify-content: center;
   padding: 0.6rem 0rem;
 }
+.game__container .card .card__front {
+  width: 100%;
+}
 .game__container .card .card__front .card__imagefront {
   height: 2.5rem;
-  width: 2.5rem;
+  width: 100%;
 }
 .game__container .card .card__front .card__content {
   display: flex;
@@ -115,9 +118,12 @@ button {
   text-align: center;
   gap: 1rem;
 }
+.game__container .card .card__back {
+  width: 100%;
+}
 .game__container .card .card__back .card__imageback {
   height: 2.5rem;
-  width: 2.5rem;
+  width: 100%;
 }
 
 .game__container {
@@ -130,16 +136,23 @@ button {
   transition: all 0.8s ease;
   transform-style: preserve-3d;
 }
-.card .card__back {
-  backface-visibility: hidden;
+.card .card__front {
+  visibility: hidden;
   transform: rotateY(180deg);
 }
-.card .card__front {
-  backface-visibility: hidden;
+.card .card__back {
+  visibility: visible;
+  transform: rotateY(-180deg);
 }
 
 .flipCard {
   transform: rotateY(180deg);
+}
+.flipCard .card__front {
+  visibility: visible;
+}
+.flipCard .card__back {
+  visibility: hidden;
 }
 
 .shake {

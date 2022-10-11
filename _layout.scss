@@ -54,9 +54,10 @@ button {
             justify-content: center;
             padding: 0.6rem 0rem;
                 .card__front {
+                    width: 100%;
                         .card__imagefront {
                             height: 2.5rem;
-                            width: 2.5rem;
+                            width: 100%;
                         }
                         .card__content {
                             display: flex;
@@ -66,9 +67,10 @@ button {
                         }
                 }
                 .card__back {
+                    width: 100%;
                         .card__imageback {
                         height: 2.5rem;
-                        width: 2.5rem;
+                        width: 100%;
                         }
                 }
         
