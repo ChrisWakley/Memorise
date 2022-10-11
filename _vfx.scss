@@ -13,7 +13,7 @@
     }
     .card__back {
         visibility: visible;
-        transform: rotateY(-180deg);
+        transform: rotateY(180deg);
     }
     
 }
@@ -26,6 +26,10 @@
     .card__back {
         visibility: hidden;
     }
+}
+
+.disable {
+    pointer-events: none;
 }
 
 .shake {

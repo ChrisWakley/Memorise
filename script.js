@@ -5,14 +5,37 @@ const gameContainer = document.querySelector(".game__container");
 const cards = Array.from(document.querySelectorAll(".card"));
 const startGame = document.querySelector(".pannel__button--start");
 const resetGame = document.querySelector(".pannel__button--reset");
+const timerRef = document.querySelector('.pannel__timer');
 // let cardOne, cardTwo;
-// let disableDeck = false;
+let [seconds,minutes] = [0,0];
+let int = null;
+//FIX CLOCK
+const setDeck = (e) => {
+    gameContainer.classList.remove("disable");
+    // if(int !== null) {
+    //     clearInterval(int);
+    //     timerRef.innerHTML = '00 : 00';
+    // }
+};
+const displayTimer = () => {
+    int = setInterval(displayTimer, 1);
+    seconds+=1;
+    if(seconds == 60) {
+        seconds = 0;
+        minutes++;
+    }
+    let m = minutes < 10 ? "0" : minutes;
+    let s = seconds < 10 ? "0" + seconds : seconds;
+    timerRef.innerHTML = `${m} : ${s}`;
+};
+startGame.addEventListener("click", setDeck, displayTimer);
 
 //THIS SHUFFLES THE CARDS ON PAGE LOAD AND ON START CLICK.
-//REMOVES FLIPCARD CLASS AS WELL.
+//REMOVES FLIPCARD CLASS AS WELL. REMOVE DISABLED CARDS.
 const shuffle = (e) => {
+    gameContainer.classList.add("disable");
     cards.forEach((card) => {
-        card.classList.remove('flipCard');
+        card.classList.remove('flipCard', 'disable');
     });
     const children = [...gameContainer.children];
     let currentIndex = children.length, temporaryValue, randomIndex;
@@ -27,7 +50,13 @@ const shuffle = (e) => {
     children.forEach(child => gameContainer.append(child))
 };
 shuffle();
-startGame.addEventListener("click", shuffle);
+const setTimer = () => {
+    if(int !== null) {
+        clearInterval(int);
+        timerRef.innerHTML = '00 : 00';
+    }
+};
+resetGame.addEventListener("click", shuffle, setTimer);
 
 
 // const showCards = () => {
@@ -56,18 +85,15 @@ startGame.addEventListener("click", shuffle);
 //     cards[i].addEventListener("click", flipCard);
 // }
 
-////THIS WORKS!
+////THIS FLIPS THE CARD OVER AND DISABLES FURTHER INTERRACTION.
 
 cards.forEach((card) => {
     card.addEventListener("click", () => {
         card.classList.toggle('flipCard');
     });
 });
-// cards.forEach((card) => {
-//     card.addEventListener("click", () => {
-//         card.classList.toggle('hiddenFront');
-//     });
-// });
-// cards.forEach((card) => {
-//     card.addEventListener("click", flipCard)
-// });
+cards.forEach((card) => {
+    card.addEventListener("click", () => {
+        card.classList.toggle('disable');
+    });
+});
