@@ -5,9 +5,9 @@ const gameContainer = document.querySelector(".game__container");
 const cards = Array.from(document.querySelectorAll(".card"));
 const startGame = document.querySelector(".pannel__button--start");
 const resetGame = document.querySelector(".pannel__button--reset");
-const timerRef = document.querySelector('.pannel__timer');
+const timerRef = document.querySelector(".pannel__timer");
 // let cardOne, cardTwo;
-let [seconds,minutes] = [0,0];
+let [milliseconds, seconds, minutes] = [0, 0, 0];
 let int = null;
 //FIX CLOCK
 const setDeck = (e) => {
@@ -17,21 +17,41 @@ const setDeck = (e) => {
     //     timerRef.innerHTML = '00 : 00';
     // }
 };
-const displayTimer = () => {
-    int = setInterval(displayTimer, 1);
-    seconds+=1;
-    if(seconds == 60) {
-        seconds = 0;
-        minutes++;
-    }
-    let m = minutes < 10 ? "0" : minutes;
-    let s = seconds < 10 ? "0" + seconds : seconds;
-    timerRef.innerHTML = `${m} : ${s}`;
+const displayTimer = (e) => {
+    int = setInterval(displayTimer, 10)
+    milliseconds+=10;
+    let m;
+    let s;
+    let ms;
+    if(milliseconds == 1000){
+        milliseconds = 0;
+        seconds++;
+        if(seconds == 60){
+            seconds = 0;
+            minutes++;
+    }}
+    m = minutes < 10 ? "0" + minutes : minutes;
+    s = seconds < 10 ? "0" + seconds : seconds;
+        if (milliseconds < 10) {
+            ms = "00" + milliseconds
+        } else if (milliseconds < 100) {
+            ms = "0" + milliseconds
+        } else {
+            ms = milliseconds
+        }
+    timerRef.innerHTML = `${m} : ${s} : ${ms}`;
 };
-startGame.addEventListener("click", setDeck, displayTimer);
+startGame.addEventListener("click", (e) => {
+    setDeck(e);
+    displayTimer(e);
+});
+
+// const gameWin = () => {
+//     if (cards)
+// }
 
 //THIS SHUFFLES THE CARDS ON PAGE LOAD AND ON START CLICK.
-//REMOVES FLIPCARD CLASS AS WELL. REMOVE DISABLED CARDS.
+//REMOVES FLIPCARD CLASS AS WELL.
 const shuffle = (e) => {
     gameContainer.classList.add("disable");
     cards.forEach((card) => {
@@ -53,12 +73,14 @@ shuffle();
 const setTimer = () => {
     if(int !== null) {
         clearInterval(int);
-        timerRef.innerHTML = '00 : 00';
+        
     }
+    timerRef.innerHTML = '00 : 00 : 000 ';
 };
-resetGame.addEventListener("click", shuffle, setTimer);
-
-
+resetGame.addEventListener("click", (e) => {
+    shuffle(e);
+    setTimer(e);
+});
 // const showCards = () => {
 //     runesArray.forEach((runes) => {
 //         gameContainer.innerHTML +=
