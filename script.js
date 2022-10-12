@@ -6,10 +6,17 @@ const cards = Array.from(document.querySelectorAll(".card"));
 const startGame = document.querySelector(".pannel__button--start");
 const resetGame = document.querySelector(".pannel__button--reset");
 const timerRef = document.querySelector(".pannel__timer");
-// let cardOne, cardTwo;
+const congrats = document.querySelector(".congrats");
+
+let m;
+let s;
+let ms;
 let [milliseconds, seconds, minutes] = [0, 0, 0];
 let int = null;
-//FIX CLOCK
+let pairs = [];
+let selectedCards = [];
+let leng = selectedCards.Array.length;
+//CLOCK RUNS BUT NOT STABLE..
 const setDeck = (e) => {
     gameContainer.classList.remove("disable");
     // if(int !== null) {
@@ -20,9 +27,6 @@ const setDeck = (e) => {
 const displayTimer = (e) => {
     int = setInterval(displayTimer, 10)
     milliseconds+=10;
-    let m;
-    let s;
-    let ms;
     if(milliseconds == 1000){
         milliseconds = 0;
         seconds++;
@@ -41,14 +45,48 @@ const displayTimer = (e) => {
         }
     timerRef.innerHTML = `${m} : ${s} : ${ms}`;
 };
-startGame.addEventListener("click", (e) => {
-    setDeck(e);
-    displayTimer(e);
-});
 
-// const gameWin = () => {
-//     if (cards)
-// }
+
+const cardSelected = () => {
+    selectedCards.push(this);
+    console.log(selectedCards);
+    if (selectedCards[0] === selectedCards[1]) {
+        matchedPairs();
+    } else {
+        noMatch();
+    }
+        if(leng === 2) {
+            gameContainer.classList.add('disable');
+        };
+}
+
+const matchedPairs = () => {
+    selectedCards[0].classList.add("match");
+    selectedCards[1].classList.add("match");
+    pairs.append(selectedCards);
+    console.log(pairs);
+    selectedCards = [];
+    gameContainer.classList.remove('disable');
+}
+
+const noMatch = () => {
+    setTimeout(() => {
+        selectedCards[0].classlist.add("shake");
+        selectedCards[1].classlist.add("shake");
+    }, 2000);
+    setTimeout(() => {
+        selectedCards[0].classList.remove("shake", "disable");
+        selectedCards[1].classList.remove("shake", "disable");
+        gameContainer.classList.remove('disable');
+    }, 2000);
+}
+
+const gameWin = () => {
+    if (matchedPairs.length == 20) {
+        congrats.classList.remove("congrats");
+        congrats.classList.add("visible");
+    }
+};
 
 //THIS SHUFFLES THE CARDS ON PAGE LOAD AND ON START CLICK.
 //REMOVES FLIPCARD CLASS AS WELL.
@@ -73,7 +111,9 @@ shuffle();
 const setTimer = () => {
     if(int !== null) {
         clearInterval(int);
-        
+        ms = 0;
+        s = 0;
+        m = 0;
     }
     timerRef.innerHTML = '00 : 00 : 000 ';
 };
@@ -118,4 +158,12 @@ cards.forEach((card) => {
     card.addEventListener("click", () => {
         card.classList.toggle('disable');
     });
+});
+cards.forEach((card) => {
+    card.addEventListener("click", cardSelected)
+    
+});
+startGame.addEventListener("click", (e) => {
+    setDeck(e);
+    displayTimer(e);
 });

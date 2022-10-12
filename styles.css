@@ -26,6 +26,11 @@ button {
   color: #fafafa;
   font-size: 10px;
 }
+.header__container .header__text .congrats {
+  visibility: hidden;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .pannel__container .pannel__timer {
   color: #fafafa;
@@ -99,17 +104,18 @@ button {
 .game__container .card {
   display: flex;
   width: 5rem;
-  height: 3rem;
+  height: 4.5rem;
   border-radius: 3px;
   overflow: hidden;
   justify-content: center;
-  padding: 0.5rem 0rem;
+  padding: 0.25rem 0rem;
 }
 .game__container .card .card__front {
+  position: absolute;
   width: 100%;
 }
 .game__container .card .card__front .card__imagefront {
-  height: 50%;
+  height: 2.5rem;
   width: 100%;
 }
 .game__container .card .card__front .card__content {
@@ -118,6 +124,7 @@ button {
   text-align: center;
 }
 .game__container .card .card__back {
+  position: absolute;
   width: 100%;
 }
 .game__container .card .card__back .card__imageback {
@@ -154,8 +161,18 @@ button {
   visibility: hidden;
 }
 
+.match {
+  opacity: 50%;
+}
+
 .disable {
   pointer-events: none;
+}
+
+.visible {
+  visibility: visible;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .shake {

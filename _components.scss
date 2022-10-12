@@ -13,6 +13,11 @@ button {
         font-family: $font-display;
         color: $color-white;
         font-size: 10px;
+        .congrats {
+            visibility: hidden;
+            font-size: 16px;
+            font-weight: bold;
+        }
     }
 }
 
