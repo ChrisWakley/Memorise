@@ -2,7 +2,7 @@
 
 // console.log(runesArray);
 const gameContainer = document.querySelector(".game__container");
-const cards = Array.from(document.querySelectorAll(".card"));
+const cards = document.querySelectorAll(".card");
 const startGame = document.querySelector(".pannel__button--start");
 const resetGame = document.querySelector(".pannel__button--reset");
 const timerRef = document.querySelector(".pannel__timer");
@@ -15,7 +15,7 @@ let [milliseconds, seconds, minutes] = [0, 0, 0];
 let int = null;
 let pairs = [];
 let selectedCards = [];
-let leng = selectedCards.Array.length;
+let leng = selectedCards.length;
 //CLOCK RUNS BUT NOT STABLE..
 const setDeck = (e) => {
     gameContainer.classList.remove("disable");
@@ -47,9 +47,10 @@ const displayTimer = (e) => {
 };
 
 
-const cardSelected = () => {
-    selectedCards.push(this);
-    console.log(selectedCards);
+const cardSelected = (event) => {
+    // selectedCards.push(this);
+    console.log(event.target.attributes);
+    console.log(event);
     if (selectedCards[0] === selectedCards[1]) {
         matchedPairs();
     } else {
@@ -137,16 +138,6 @@ resetGame.addEventListener("click", (e) => {
 // };
 // showCards(runesArray);
 
-// const flipCard = (e) => {
-//     e.target.classList.toggle("flipCard");
-//     console.log(e.target);
-//     e.preventDefault()
-// };
-
-// for(let i = 0; i < cards.length; i++){
-//     cards[i].addEventListener("click", flipCard);
-// }
-
 ////THIS FLIPS THE CARD OVER AND DISABLES FURTHER INTERRACTION.
 
 cards.forEach((card) => {
@@ -160,8 +151,7 @@ cards.forEach((card) => {
     });
 });
 cards.forEach((card) => {
-    card.addEventListener("click", cardSelected)
-    
+    card.addEventListener("click", cardSelected)    
 });
 startGame.addEventListener("click", (e) => {
     setDeck(e);
